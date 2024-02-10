@@ -10,9 +10,12 @@ class Task extends Model
     use HasFactory;
 
     protected $casts = [
-        'is_done' => 'boolean'
+        'is_done' => 'boolean',
     ];
     protected $hidden = [
-        'updated_at'
+        'updated_at',
+    ];
+    protected $fillable = [
+        'title',
     ];
 }
