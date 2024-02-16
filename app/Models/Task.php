@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Contracts\Database\Query\Builder as QueryBuilder;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,7 +24,7 @@ class Task extends Model
 
     protected static function booted(): void
     {
-        static::addGlobalScope('creator', function (Builder $builder) {
+        static::addGlobalScope('creator', function (QueryBuilder $builder) {
             $builder->where('creator_id', Auth::id());
         });
     }
@@ -30,5 +32,10 @@ class Task extends Model
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
     }
 }
