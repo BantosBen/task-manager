@@ -13,6 +13,17 @@
 
 namespace App\Models{
 /**
+ * App\Models\Member
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Member newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Member newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Member query()
+ */
+	class Member extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Project
  *
  * @property int $id
@@ -21,6 +32,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User $creator
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $members
+ * @property-read int|null $members_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Task> $tasks
  * @property-read int|null $tasks_count
  * @method static \Database\Factories\ProjectFactory factory($count = null, $state = [])
@@ -76,6 +89,8 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Project> $membership
+ * @property-read int|null $membership_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Project> $projects
