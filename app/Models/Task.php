@@ -19,7 +19,8 @@ class Task extends Model
     ];
     protected $fillable = [
         'title',
-        'is_done'
+        'is_done',
+        'project_id'
     ];
 
     protected static function booted(): void
